@@ -1,0 +1,92 @@
+{
+  "name": "steam-weblogin",
+  "description": "Provides an interface for sign into 3d-party sites using Steam OpenID",
+  "license": "MIT",
+  "author": {
+    "name": "Alex Owl",
+    "email": "AlexOwl@protonmail.com",
+    "url": "https://AlexOwl.github.com/"
+  },
+  "repository": "AlexOwl/steam-weblogin",
+  "bugs": {
+    "email": "AlexOwl@protonmail.com",
+    "url": "https://github.com/AlexOwl/steam-weblogin/issues"
+  },
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf lib",
+    "format": "run-s format:* -l",
+    "format:package": "prettier-package-json --write --expand-users",
+    "format:prettier": "prettier-tslint fix",
+    "format:tslint": "tslint -p tsconfig.json --fix",
+    "prepublish": "run-s format test clean build",
+    "start": "node lib/index.js --inspect-brk=9229",
+    "start:dev": "ts-node src/index.ts --inspect-brk=9229",
+    "start:dev:watch": "nodemon --exec npm run start:dev",
+    "test": "run-s test:* -ns",
+    "test:jest": "npm run test:jest:fast --full",
+    "test:jest:fast": "jest --passWithNoTests",
+    "test:tsc": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@types/cheerio": "^0.22.10",
+    "@types/q": "^1.5.1",
+    "@types/requestretry": "^1.12.4",
+    "@types/tough-cookie": "^2.3.5",
+    "cheerio": "^1.0.0-rc.2",
+    "qs": "^6.6.0",
+    "requestretry": "^3.1.0",
+    "tough-cookie": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.9",
+    "@types/node": "^11.9.6",
+    "@types/qs": "^6.5.1",
+    "jest": "24.0.0",
+    "nodemon": "^1.18.10",
+    "npm-run-all": "4",
+    "prettier": "^1.16.4",
+    "prettier-package-json": "^2.1.0",
+    "prettier-tslint": "^0.4.2",
+    "rimraf": "^2.6",
+    "steamcommunity": "^3.39.0",
+    "ts-jest": "24.0.0",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.13.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.3.3333"
+  },
+  "keywords": [
+    "api",
+    "auth",
+    "identity",
+    "login",
+    "oauth",
+    "openid",
+    "steam",
+    "steamcommunity",
+    "web",
+    "weblogin"
+  ],
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**",
+      "!**/@types/**",
+      "!**/index.ts"
+    ],
+    "coverageReporters": [
+      "text"
+    ],
+    "verbose": true,
+    "bail": true
+  }
+}
