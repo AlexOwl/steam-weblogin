@@ -245,3 +245,5 @@ if (error instanceof LoginError) {
 # 📝 License
 
 Released under [MIT license](https://AlexOwl.mit-license.org/)
+
+# 🦉 [Alex Owl](https://github.com/AlexOwl)
